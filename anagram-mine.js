@@ -25,13 +25,11 @@ function validAnagram(a, b) {
 
     for (let c of a) {
         s1[c] = ++s1[c] || 1;
-        console.log(s1)
     }
 
     for (let c of b) {
         s2[c] = ++s2[c] || 1;
     }
-
 
     for (let key in s1) {
         if (!(key in s2)) {
