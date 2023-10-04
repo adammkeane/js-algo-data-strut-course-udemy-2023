@@ -32,6 +32,7 @@ function validAnagram(a, b) {
     }
 
     for (let key in s1) {
+        // i think this first if statement may be unecessary.
         if (!(key in s2)) {
             return false
         }
