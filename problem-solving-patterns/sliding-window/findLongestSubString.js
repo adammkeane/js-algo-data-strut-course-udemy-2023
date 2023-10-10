@@ -13,7 +13,8 @@
 
 // Time Complexity - O(n)
 
-// my solution
+// my solution - think i cheated because my solution is O(n^2) 
+// (have a splice method inside a loop going over each char in string)
 
 function findLongestSubstring(s) {
     if (s.length === 0) return 0
@@ -26,6 +27,7 @@ function findLongestSubstring(s) {
 
     while (end <= s.length) {
         if (new Set(ns).size < ns.length) {
+            // could have also used ns.shift() here, as just need to remove from the beginning.
             ns.splice(0, 1);
             start++
         } else {
@@ -43,6 +45,7 @@ function findLongestSubstring(s) {
 // official solution
 
 // findLongestSubstring Solution
+// don't understand this solution
 
 function findLongestSubstring(str) {
     let longest = 0;
