@@ -5,13 +5,6 @@ function swap (arr, idx1, idx2) {
     arr[idx2] = temp;
 }
 
-// swap function
-function swap (arr, idx1, idx2) {
-    let temp = arr[idx1];
-    arr[idx1] = arr[idx2];
-    arr[idx2] = temp;
-}
-
 // my code
 function selectionSortPractice (arr) {
     for (let i = 0; i < arr.length; i++) {
