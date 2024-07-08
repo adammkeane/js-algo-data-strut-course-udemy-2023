@@ -1,3 +1,4 @@
+// my code
 function swap (arr, idx1, idx2) {
     let temp = arr[idx1];
     arr[idx1] = arr[idx2];
@@ -52,7 +53,7 @@ function bubbleSort(arr){
   }
   
   bubbleSort([8,1,2,3,4,5,6,7]);
-  
+
 // Optimized BubbleSort with noSwaps
 function bubbleSort(arr){
     var noSwaps;
