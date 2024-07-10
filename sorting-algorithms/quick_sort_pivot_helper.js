@@ -19,7 +19,7 @@ function pivot (arr, startIndex = 0, endIndex = arr.length-1){
     return pivotIndex;
 }
 
-console.log(pivot([5, 2, 1, 8, 4, 7, 6, 3]))
+console.log(pivot([5,2,1,8,4,7,6,3]))
 
 // his code
 // First Version
