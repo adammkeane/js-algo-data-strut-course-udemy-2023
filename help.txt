@@ -1,1 +1,1 @@
-node sorting-algorithms/merge_sort
+node sorting-algorithms/quick_sort_pivot_helper
