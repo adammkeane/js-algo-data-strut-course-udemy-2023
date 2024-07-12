@@ -64,8 +64,8 @@ class Student {
     
 }
 
-let firstStudent = new Student("Colt", "Steele",1);
-let secondStudent = new Student("Blue", "Steele",2);
+// let firstStudent = new Student("Colt", "Steele",1);
+// let secondStudent = new Student("Blue", "Steele",2);
 
 
 // class method - better example
