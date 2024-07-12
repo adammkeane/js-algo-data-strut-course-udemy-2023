@@ -14,7 +14,7 @@ class SinglyLinkedList{
     } 
     push(val) {
         let pushedNode = new Node(val);
-        if (this.head === null) {
+        if (this.head === null){
             this.head = pushedNode;
             this.tail = pushedNode;
         } else {
@@ -25,14 +25,79 @@ class SinglyLinkedList{
         return this
     }
     pop() {
-        let poppedNode;
+        if (this.length === 0) return undefined;
+        if (this.length === 1){
+            let poppedNode = this.tail;
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return poppedNode;
+        }
+        if (this.length === 2){
+            let poppedNode = this.tail;
+            this.tail = this.head;
+            this.length--;
+            return poppedNode;
+        }
+        let currentNode = this.head;
+        while (currentNode.next.next){
+            currentNode = currentNode.next;
+        }
+        this.tail = currentNode;
+        let poppedNode = currentNode.next;
+        this.length--;
         return poppedNode;
     }
 }
 
 let list = new SinglyLinkedList();
 list.push(12);
+list.push(13);
+list.push(14);
 // console.log(list.push(32));
+// console.log(list)
 console.log(list.pop())
+console.log(list)
 
 // official solution
+class SinglyLinkedList{
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+    push(val){
+        var newNode = new Node(val);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+        this.length++;
+        return this;
+    }
+    pop(){
+        if(!this.head) return undefined;
+        var current = this.head;
+        var newTail = current;
+        while(current.next){
+            newTail = current;
+            current = current.next;
+        }
+        this.tail = newTail;
+        this.tail.next = null;
+        this.length--;
+        if(this.length === 0){
+            this.head = null;
+            this.tail = null;
+        }
+        return current;
+    }
+}
+
+// var list = new SinglyLinkedList()
+// list.push("HELLO")
+// list.push("GOODBYE")
+// list.push("!")
