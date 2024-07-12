@@ -1,2 +1,2 @@
 node sorting-algorithms/radix_sort
-node data-structures/sll/
+node data-structures/sll
