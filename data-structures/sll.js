@@ -75,6 +75,13 @@ class SinglyLinkedList{
         }
         return getNode; 
     }
+    set(index, val) {
+        if (this.get(index)) {
+            this.get(index).val = val;
+            return true;
+        }
+        return false;
+    }
 }
 
 let list = new SinglyLinkedList();
@@ -86,7 +93,8 @@ list.push(14);
 // console.log(list.pop())
 // console.log(list.shift())
 // console.log(list.unshift(2))
-console.log(list.get(0))
+// console.log(list.get(0))
+console.log(list.set(0, 11))
 console.log(list)
 
 // official solution
