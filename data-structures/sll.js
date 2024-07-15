@@ -82,6 +82,24 @@ class SinglyLinkedList{
         }
         return false;
     }
+    insert(index, val) {
+        if (index < 0||index > this.length) return false;
+        if (index === this.length) {
+            this.push(val);
+            return true;
+        }
+        if (index === 0) {
+            this.unshift(val);
+            return true;
+        }
+        let insertedNode = new Node(val);
+        let preNode = this.get(index-1);
+        let postNode = this.get(index);
+        preNode.next = insertedNode;
+        insertedNode.next = postNode;
+        this.length++;
+        return true;
+    }
 }
 
 let list = new SinglyLinkedList();
@@ -94,7 +112,8 @@ list.push(14);
 // console.log(list.shift())
 // console.log(list.unshift(2))
 // console.log(list.get(0))
-console.log(list.set(0, 11))
+// console.log(list.set(0, 11))
+console.log(list.insert(4, 11))
 console.log(list)
 
 // official solution
