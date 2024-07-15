@@ -48,6 +48,25 @@ class SinglyLinkedList{
         this.length--;
         return poppedNode;
     }
+    shift() {
+        if (this.length === 0) return undefined;
+        let shiftedNode = this.head;
+        this.head = this.head.next;
+        this.length--;
+        if (this.length === 0) this.tail = null;
+        return shiftedNode;
+    }
+    unshift(val) {
+        let unshiftedNode = new Node(val);
+        if (this.length === 0) {
+            this.tail = unshiftedNode;
+        } else {
+            unshiftedNode.next = this.head;
+        }
+        this.head = unshiftedNode;
+        this.length++;
+        return this;
+    }
 }
 
 let list = new SinglyLinkedList();
@@ -56,48 +75,9 @@ list.push(13);
 list.push(14);
 // console.log(list.push(32));
 // console.log(list)
-console.log(list.pop())
+// console.log(list.pop())
+// console.log(list.shift())
+console.log(list.unshift(2))
 console.log(list)
 
 // official solution
-class SinglyLinkedList{
-    constructor(){
-        this.head = null;
-        this.tail = null;
-        this.length = 0;
-    }
-    push(val){
-        var newNode = new Node(val);
-        if(!this.head){
-            this.head = newNode;
-            this.tail = this.head;
-        } else {
-            this.tail.next = newNode;
-            this.tail = newNode;
-        }
-        this.length++;
-        return this;
-    }
-    pop(){
-        if(!this.head) return undefined;
-        var current = this.head;
-        var newTail = current;
-        while(current.next){
-            newTail = current;
-            current = current.next;
-        }
-        this.tail = newTail;
-        this.tail.next = null;
-        this.length--;
-        if(this.length === 0){
-            this.head = null;
-            this.tail = null;
-        }
-        return current;
-    }
-}
-
-// var list = new SinglyLinkedList()
-// list.push("HELLO")
-// list.push("GOODBYE")
-// list.push("!")
