@@ -67,6 +67,14 @@ class SinglyLinkedList{
         this.length++;
         return this;
     }
+    get(index) {
+        if (index < 0||index > this.length-1) return null;
+        let getNode = this.head;
+        for (let i=1; i <= index; i++) {
+            getNode = getNode.next; 
+        }
+        return getNode; 
+    }
 }
 
 let list = new SinglyLinkedList();
@@ -77,7 +85,8 @@ list.push(14);
 // console.log(list)
 // console.log(list.pop())
 // console.log(list.shift())
-console.log(list.unshift(2))
+// console.log(list.unshift(2))
+console.log(list.get(0))
 console.log(list)
 
 // official solution
