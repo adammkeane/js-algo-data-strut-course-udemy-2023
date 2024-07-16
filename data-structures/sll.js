@@ -111,21 +111,42 @@ class SinglyLinkedList{
         this.length--;
         return removedNode;
     }
+    reverse() {
+        let node = this.head;
+        this.head = this.tail
+        this.tail = node;
+        let next = null;
+        let prev = null;
+        for (let i = 0; i < this.length; i++) {
+            next = node.next;
+            console.log('he', prev)
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
+    }
 }
 
 let list = new SinglyLinkedList();
 list.push(12);
 list.push(13);
 list.push(14);
+// list.push(15);
+// list.push(16);
+// list.push(17);
+// list.push(18);
 // console.log(list.push(32));
 // console.log(list)
 // console.log(list.pop())
 // console.log(list.shift())
 // console.log(list.unshift(2))
-// console.log(list.get(0))
+// console.log(list.get(2))
 // console.log(list.set(0, 11))
 // console.log(list.insert(4, 11))
-console.log(list.remove(2))
+// console.log(list.remove(2))
+console.log(list.reverse())
+// console.log(list.get(4))
 console.log(list)
 
 // official solution
