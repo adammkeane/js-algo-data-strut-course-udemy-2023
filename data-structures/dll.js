@@ -26,13 +26,29 @@ class DoublyLinkedList {
         this.length++;
         return this;
     }
+    pop() {
+        if (!this.head) return undefined;
+        let currentTail = this.tail;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            let newTail = currentTail.prev;
+            this.tail = newTail;
+            newTail.next = null;
+            currentTail.prev = null;
+        }
+        this.length--;
+        return currentTail;
+    }
 }
 
 let list = new DoublyLinkedList();
 list.push(12);
 list.push(13);
-// list.push(14);
-// console.log(list.push(32));
+list.push(14);
+list.push(15);
+console.log(list.pop());
 console.log(list)
 
 // official solution
