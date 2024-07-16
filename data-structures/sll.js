@@ -6,7 +6,7 @@ class Node{
 }
 
 // my solution
-class SinglyLinkedList{
+class SinglyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
