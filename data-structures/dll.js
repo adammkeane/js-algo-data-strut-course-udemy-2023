@@ -18,12 +18,9 @@ class DoublyLinkedList {
         if (!this.head) {
             this.head = pushedNode;
             this.tail = pushedNode;
-            console.log('h1', pushedNode.prev)
         } else {
             this.tail.next = pushedNode;
-            console.log('h2', pushedNode)
             pushedNode.prev = this.tail;
-            console.log('h3', pushedNode)
             this.tail = pushedNode;
         }
         this.length++;
