@@ -68,16 +68,35 @@ class DoublyLinkedList {
         this.length++;
         return unshiftedNode;
     }
+    get(idx) {
+        if (idx >= this.length|| idx < 0) return null;
+        let half = Math.floor(this.length/2);
+        let gotNode;
+        if (idx <= half) {
+            gotNode = this.head;
+            for (let i = 0; i < idx; i++) {
+                gotNode = gotNode.next;
+            }
+        } else {
+            gotNode = this.tail;
+            for (let i = this.length-1; i > idx; i--) {
+                gotNode = gotNode.prev;
+            }   
+        }
+        return gotNode;
+    }
 }
 
 let list = new DoublyLinkedList();
 list.push(12);
 list.push(13);
 list.push(14);
-// list.push(15);
+list.push(15);
+list.push(16);
 // console.log(list.pop());
 // console.log(list.shift());
-console.log(list.unshift(11));
+// console.log(list.unshift(11));
+console.log(list.get(3));
 console.log(list)
 
 // official solution
