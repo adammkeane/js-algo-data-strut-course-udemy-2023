@@ -138,7 +138,6 @@ class DoublyLinkedList {
                 this.tail = this.head;
                 this.head = tail;
             }
-            console.log(i)
         }
         return this;
     }
