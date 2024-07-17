@@ -85,6 +85,14 @@ class DoublyLinkedList {
         }
         return gotNode;
     }
+    set(idx, val) {
+        let nodeToSet = this.get(idx);
+        if (nodeToSet) {
+            nodeToSet.val = val;
+            return true;
+        }
+        return false;
+    }
 }
 
 let list = new DoublyLinkedList();
@@ -96,7 +104,8 @@ list.push(16);
 // console.log(list.pop());
 // console.log(list.shift());
 // console.log(list.unshift(11));
-console.log(list.get(3));
+// console.log(list.get(3));
+console.log(list.set(1,11));
 console.log(list)
 
 // official solution
