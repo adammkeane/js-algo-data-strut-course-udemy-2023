@@ -23,14 +23,23 @@ class Queue {
         this.size++;
         return this.size;
     }
+    dequeue() {
+        if (this.size === 0) return null;
+        let dequeuedNode = this.first;
+        dequeuedNode.next = null;
+        this.first = this.first.next;
+        this.size--;
+        if (this.size === 0) this.last = null;
+        return dequeuedNode.val;
+    }
 }
 
 let queue = new Queue();
 queue.enqueue(11);
 queue.enqueue(12);
 queue.enqueue(13);
-console.log(queue.enqueue(14));
-// console.log(queue.dequeue());
+// console.log(queue.enqueue(14));
+console.log(queue.dequeue());
 console.log(queue);
 
 
