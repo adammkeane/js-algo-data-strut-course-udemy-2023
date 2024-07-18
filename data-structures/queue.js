@@ -12,36 +12,25 @@ class Queue {
         this.last = null;
         this.size = 0;
     }
-    push(val) {
-        let pushedNode = new Node(val);
+    enqueue(val) {
+        let enqueuedNode = new Node(val);
         if (this.size === 0) {
-            this.first = pushedNode;
-            this.last = pushedNode;
-
+            this.first = enqueuedNode;
         } else {
-            pushedNode.next = this.first;
-            this.first = pushedNode;
+            this.last.next = enqueuedNode;
         }
+        this.last = enqueuedNode;
         this.size++;
         return this.size;
     }
-    pop() {
-        if (this.size === 0) return null;
-        let poppedNode = this.first;
-        this.first = poppedNode.next;
-        poppedNode.next = null;
-        this.size--;
-        if (this.size === 0) this.last = null;
-        return poppedNode.val;
-    }
 }
 
-let stack = new Queue();
-queue.push(11);
-// queue.push(12);
-// queue.push(13);
-// console.log(queue.push(14));
-console.log(queue.pop());
+let queue = new Queue();
+queue.enqueue(11);
+queue.enqueue(12);
+queue.enqueue(13);
+console.log(queue.enqueue(14));
+// console.log(queue.dequeue());
 console.log(queue);
 
 
