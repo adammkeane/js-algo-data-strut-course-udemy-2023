@@ -1,4 +1,5 @@
 node sorting-algorithms/radix_sort
 node data-structures/sll
 node data-structures/dll
-node data-structures/stacks_queues
+node data-structures/stack
+node data-structures/queue

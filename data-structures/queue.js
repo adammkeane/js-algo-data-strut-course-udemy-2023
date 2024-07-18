@@ -6,7 +6,7 @@ class Node {
 }
 
 // my solution
-class Stack {
+class Queue {
     constructor() {
         this.first = null;
         this.last = null;
@@ -31,17 +31,18 @@ class Stack {
         this.first = poppedNode.next;
         poppedNode.next = null;
         this.size--;
-        return poppedNode;
+        if (this.size === 0) this.last = null;
+        return poppedNode.val;
     }
 }
 
-let stack = new Stack();
-stack.push(11);
-stack.push(12);
-stack.push(13);
-console.log(stack.push(14));
-console.log(stack.pop());
-console.log(stack);
+let stack = new Queue();
+queue.push(11);
+// queue.push(12);
+// queue.push(13);
+// console.log(queue.push(14));
+console.log(queue.pop());
+console.log(queue);
 
 
 
