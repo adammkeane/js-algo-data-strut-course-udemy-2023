@@ -25,6 +25,14 @@ class Stack {
         this.size++;
         return this.size;
     }
+    pop() {
+        if (this.size === 0) return null;
+        let poppedNode = this.first;
+        this.first = poppedNode.next;
+        poppedNode.next = null;
+        this.size--;
+        return poppedNode;
+    }
 }
 
 let stack = new Stack();
@@ -32,6 +40,7 @@ stack.push(11);
 stack.push(12);
 stack.push(13);
 console.log(stack.push(14));
+console.log(stack.pop());
 console.log(stack);
 
 
