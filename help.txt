@@ -3,3 +3,4 @@ node data-structures/sll
 node data-structures/dll
 node data-structures/stack
 node data-structures/queue
+node data-structures/bst
