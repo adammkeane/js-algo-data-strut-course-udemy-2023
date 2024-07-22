@@ -96,6 +96,18 @@ class BinarySearchTree {
         helper(currentNode);
         return allNodes;
     }
+    dfsIn() {
+        let allNodes = [];
+        let currentNode = this.root;
+
+        function helper(node) {
+            if (node.left) helper(node.left);
+            allNodes.push(node.val);
+            if (node.right) helper(node.right);
+        }
+        helper(currentNode);
+        return allNodes;
+    }
 }
 
 
@@ -119,7 +131,8 @@ bst.insert(20);
 // console.log(bst.find(12));
 // console.log(bst.bfs());
 // console.log(bst.dfsPre());
-console.log(bst.dfsPost());
+// console.log(bst.dfsPost());
+console.log(bst.dfsIn());
 // console.log(bst);
 
 // official solution
