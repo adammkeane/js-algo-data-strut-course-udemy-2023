@@ -72,6 +72,18 @@ class BinarySearchTree {
         }
         return allNodes;
     }
+    dfsPre() {
+        let allNodes = [];
+        let currentNode = this.root;
+
+        function helper(node) {
+            allNodes.push(node.val);
+            if (node.left) helper(node.left);
+            if (node.right) helper(node.right);
+        }
+        helper(currentNode);
+        return allNodes;
+    }
 }
 
 
@@ -80,14 +92,21 @@ let bst = new BinarySearchTree();
 // bst.root.right = new Node(15);
 // bst.root.left = new Node(7);
 // bst.root.left.right = new Node(9);
-bst.insert(50);
-bst.insert(25);
-bst.insert(75);
-bst.insert(23);
-bst.insert(27);
-bst.insert(73);
+// bst.insert(50);
+// bst.insert(25);
+// bst.insert(75);
+// bst.insert(23);
+// bst.insert(27);
+// bst.insert(73);
+bst.insert(10);
+bst.insert(6);
+bst.insert(15);
+bst.insert(3);
+bst.insert(8);
+bst.insert(20);
 // console.log(bst.find(12));
-console.log(bst.bfs());
+// console.log(bst.bfs());
+console.log(bst.dfsPre());
 // console.log(bst);
 
 // official solution
