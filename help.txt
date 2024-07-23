@@ -5,3 +5,4 @@ node data-structures/stack
 node data-structures/queue
 node data-structures/bst
 node data-structures/tree_traversal
+node data-structures/binary_heap
