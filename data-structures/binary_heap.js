@@ -29,11 +29,13 @@ class MaxBinaryHeap {
         const max = this.values.pop();
 
         function bubbleDown(arr, idx) {
-            console.log('het', idx)
             let childIndex1 = (2*idx)+1;
             let childIndex2 = (2*idx)+2;
             let childIndexBiggest;
-            if (arr[childIndex1] > arr[childIndex2]) {
+
+            if (childIndex1 >= arr.length && childIndex2 >= arr.length) return;
+
+            if (arr[childIndex1] > arr[childIndex2] || childIndex2 >= arr.length) {
                 childIndexBiggest = childIndex1;
             } else {
                 childIndexBiggest = childIndex2;
