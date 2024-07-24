@@ -24,12 +24,36 @@ class MaxBinaryHeap {
         bubbleUp(this.values, this.values.length-1);
         return this.values;
     }
+    extractMax() {
+        swap(this.values, 0, this.values.length-1);
+        const max = this.values.pop();
+
+        function bubbleDown(arr, idx) {
+            console.log('het', idx)
+            let childIndex1 = (2*idx)+1;
+            let childIndex2 = (2*idx)+2;
+            let childIndexBiggest;
+            if (arr[childIndex1] > arr[childIndex2]) {
+                childIndexBiggest = childIndex1;
+            } else {
+                childIndexBiggest = childIndex2;
+            }
+
+            while (arr[childIndexBiggest] > arr[idx]) {
+                    swap(arr, idx, childIndexBiggest);
+                    bubbleDown(arr, childIndexBiggest)
+            }
+        }
+        bubbleDown(this.values, 0)
+        return max;
+    }
 }
 
 let binaryHeap = new MaxBinaryHeap();
 binaryHeap.values = [41,39,33,18,27,12];
-console.log(binaryHeap.insert(55));
-// console.log(binaryHeap);
+// console.log(binaryHeap.insert(55));
+console.log(binaryHeap.extractMax());
+console.log(binaryHeap);
 
 
 
