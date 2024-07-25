@@ -6,9 +6,9 @@ function swap (arr, idx1, idx2) {
 }
 
 class Node {
-    constructor() {
-        this.val = null;
-        this.priority = null;
+    constructor(val, priority) {
+        this.val = val;
+        this.priority = priority;
     }
 }
 
