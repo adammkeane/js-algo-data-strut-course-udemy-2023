@@ -6,3 +6,4 @@ node data-structures/queue
 node data-structures/bst
 node data-structures/tree_traversal
 node data-structures/binary_heap
+node data-structures/priority_queue
