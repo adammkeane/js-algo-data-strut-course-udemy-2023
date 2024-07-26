@@ -17,12 +17,13 @@ class PriorityQueue {
     constructor() {
         this.values = [];
     }
-    insert(val) {
-        this.values.push(val);
+    enqueue(val, priority) {
+        let enqueuedNode = new Node(val, priority);
+        this.values.push(enqueuedNode);
 
         function bubbleUp(arr, idx) {
             let parentIndex = Math.floor((idx-1)/2);
-            while (arr[idx] > arr[parentIndex]) {
+            while (parentIndex >= 0 && arr[idx].priority < arr[parentIndex].priority) {
                 swap(arr, idx, parentIndex);
                 if (parentIndex > 0) bubbleUp(arr, parentIndex);
             }
@@ -31,26 +32,30 @@ class PriorityQueue {
         bubbleUp(this.values, this.values.length-1);
         return this.values;
     }
-    extractMax() {
+    dequeue() {
         swap(this.values, 0, this.values.length-1);
         const max = this.values.pop();
 
         function bubbleDown(arr, idx) {
             let childIndex1 = (2*idx)+1;
             let childIndex2 = (2*idx)+2;
-            let childIndexBiggest;
+            let childIndexLowestPriority;
 
             if (childIndex1 >= arr.length && childIndex2 >= arr.length) return;
 
-            if (arr[childIndex1] > arr[childIndex2] || childIndex2 >= arr.length) {
-                childIndexBiggest = childIndex1;
+            if (childIndex2 >= arr.length) {
+                childIndexLowestPriority = childIndex1;
+            } else if (childIndex1 >= arr.length) {
+                childIndexLowestPriority = childIndex2;
+            } else if (arr[childIndex1].priority < arr[childIndex2].priority) {
+                childIndexLowestPriority = childIndex1;
             } else {
-                childIndexBiggest = childIndex2;
+                childIndexLowestPriority = childIndex2;
             }
 
-            while (arr[childIndexBiggest] > arr[idx]) {
-                    swap(arr, idx, childIndexBiggest);
-                    bubbleDown(arr, childIndexBiggest)
+            while (arr[childIndexLowestPriority].priority < arr[idx].priority) {
+                    swap(arr, idx, childIndexLowestPriority);
+                    bubbleDown(arr, childIndexLowestPriority)
             }
         }
         bubbleDown(this.values, 0)
@@ -59,9 +64,17 @@ class PriorityQueue {
 }
 
 let priorityQueue = new PriorityQueue();
-priorityQueue.values = [41,39,33,18,27,12];
-// console.log(priorityQueue.insert(55));
-console.log(priorityQueue.extractMax());
+// priorityQueue.values = [41,39,33,18,27,12];
+priorityQueue.enqueue(2, 2);
+priorityQueue.enqueue(2, 1);
+priorityQueue.enqueue(2, 4);
+priorityQueue.enqueue(2, 3);
+// priorityQueue.enqueue(2, 1.5);
+priorityQueue.enqueue(2, 0);
+
+console.log(priorityQueue.dequeue());
+
+
 console.log(priorityQueue);
 
 
