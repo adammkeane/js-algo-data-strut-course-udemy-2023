@@ -14,7 +14,23 @@ class HashTable {
             }
         return total;
     }
+
+    set(key, value) {
+        let hashedIndex = this._hash(key);
+        console.log(hashedIndex)
+        let arrayElement = this.keyMap[hashedIndex];
+        if (Array.isArray(arrayElement)) {
+            arrayElement.push([key, value]);
+        } else {
+            this.keyMap[hashedIndex] = [[key, value]];
+        }
+    }
 }
 
+let hashTable = new HashTable();
+hashTable.set('first', 'test1');
+hashTable.set('first', 'test1');
+console.log(hashTable.keyMap);
+console.log(hashTable.keyMap[14]);
 
 // official solution
