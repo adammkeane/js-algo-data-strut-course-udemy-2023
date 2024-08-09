@@ -44,9 +44,7 @@ class Graph {
         let visited = {};
         
         stack.push(startNode);
-        
-
-        while (stack.length > 0) {
+        while (stack.length) {
             let poppedNode = stack.pop();
             if (!visited[poppedNode]) {
                 visited[poppedNode] = true;
@@ -56,7 +54,22 @@ class Graph {
         }
         return results;
     }
-
+    BFS(startNode) {
+        let queue = [];
+        let results = [];
+        let visited = {};
+        
+        queue.push(startNode);
+        while (queue.length) {
+            let shiftedNode = queue.shift();
+            if (!visited[shiftedNode]) {
+                visited[shiftedNode] = true;
+                results.push(shiftedNode);
+                queue.push(...this.adjacencyList[shiftedNode]);
+            }   
+        }
+        return results;
+    }   
 }
 
 
@@ -90,7 +103,8 @@ g.addEdge("E","F")
 
 console.log(g)
 // console.log(g.DFS_Recusive("A"))
-console.log(g.DFS_Iterative("A"))
+// console.log(g.DFS_Iterative("A"))
+console.log(g.BFS("A"))
 
 
 
