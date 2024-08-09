@@ -38,6 +38,25 @@ class Graph {
         helperFunction(startNode);
         return results;
     }
+    DFS_Iterative(startNode) {
+        let stack = [];
+        let results = [];
+        let visited = {};
+        
+        stack.push(startNode);
+        
+
+        while (stack.length > 0) {
+            let poppedNode = stack.pop();
+            if (!visited[poppedNode]) {
+                visited[poppedNode] = true;
+                results.push(poppedNode);
+                stack.push(...this.adjacencyList[poppedNode]);
+            }   
+        }
+        return results;
+    }
+
 }
 
 
@@ -70,7 +89,8 @@ g.addEdge("D","F")
 g.addEdge("E","F")
 
 console.log(g)
-console.log(g.DFS_Recusive("A"))
+// console.log(g.DFS_Recusive("A"))
+console.log(g.DFS_Iterative("A"))
 
 
 
