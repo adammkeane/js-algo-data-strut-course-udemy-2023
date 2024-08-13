@@ -9,3 +9,4 @@ node data-structures/binary_heap
 node data-structures/priority_queue
 node data-structures/hash_tables
 node data-structures/graphs
+node data-structures/dijkstra
