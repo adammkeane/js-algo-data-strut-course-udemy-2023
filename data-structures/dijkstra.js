@@ -27,35 +27,52 @@ class WeightedGraph {
     }
     dijk(startV, endV) {
       let distances = {};
-      for (let key of Object.keys(this.adjacencyList)) {
-        if (key === startV) {
-          distances[key] = 0;
-        } else {
-          distances[key] = Infinity;
-        }
-      }
-      
       let pQ = new PriorityQueue();
-      for (let [key, weight] of Object.entries(distances)) {
-        pQ.enqueue(key, weight);
-      }
-      pQ.sort();
-
       let previous = {};
-      for (let key of Object.keys(this.adjacencyList)) {
-          previous[key] = null;
+      
+      // to have array to return shortest node path from startV to endV
+      let path = [];
+
+      for (let vertex in this.adjacencyList) {
+        if (vertex === startV) {
+          distances[vertex] = 0;
+          pQ.enqueue(vertex, 0);
+        } else {
+          distances[vertex] = Infinity;
+          // i don't see why you need to add each vertex to pQ, as they will be added below.
+          // pQ.enqueue(vertex, Infinity);
+        }
+        previous[vertex] = null;
       }
 
       while (pQ.values.length > 0) {
         let currentV = pQ.dequeue();
-        if (currentV === endV) break; 
-
-        for (let [vertex, weight] of Object.entries(this.adjacencyList[currentV.val])) {
-          
+        
+        // if we've reached the endV, we build our path and break out of the while loop.
+        if (currentV.val === endV) {
+          path.unshift(endV);
+          while (previous[currentV.val] !== startV) {
+            path.unshift(previous[currentV.val]);
+            currentV.val = previous[currentV.val];
+          }
+          path.unshift(startV);
+          break; 
+        }
+        
+        for (let el of this.adjacencyList[currentV.val]) {
+          let length = null;
+          length = el.weight + distances[currentV.val];
+          if (length < distances[el.node]) {
+            distances[el.node] = length;
+            previous[el.node] = currentV.val;
+            pQ.enqueue(el.node, length)
+          } 
+          // console.log(distances)
+          // console.log(previous)
+          // console.log(pQ)
         }
       }
-
-      return distances;
+      return path;
     }
 }
 
